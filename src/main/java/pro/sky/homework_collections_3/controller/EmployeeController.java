@@ -23,8 +23,8 @@ public class EmployeeController {
     @GetMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE)
     public Employee add(@RequestParam("firstName") String name,
                         @RequestParam("lastName") String lastName,
-                        @RequestParam("salary") int salary,
-                        @RequestParam("department") int department) {
+                        @RequestParam double salary,
+                        @RequestParam int department) {
         if (Objects.isNull(name) || Objects.isNull(lastName)) {
             System.out.println("Неправильно переданы параметры!");
         }
@@ -33,24 +33,20 @@ public class EmployeeController {
 
     @GetMapping(value = "/remove", produces = MediaType.APPLICATION_JSON_VALUE)
     public Employee remove(@RequestParam("firstName") String name,
-                        @RequestParam("lastName") String lastName,
-                           @RequestParam("salary") int salary,
-                           @RequestParam("department") int department) {
+                        @RequestParam("lastName") String lastName) {
         if (Objects.isNull(name) || Objects.isNull(lastName)) {
             System.out.println("Неправильно переданы параметры!");
         }
-        return employeeService.removeEmployee(name, lastName, salary, department);
+        return employeeService.removeEmployee(name, lastName);
     }
 
     @GetMapping(value = "/find", produces = MediaType.APPLICATION_JSON_VALUE)
     public Employee find(@RequestParam("firstName") String name,
-                           @RequestParam("lastName") String lastName,
-                         @RequestParam("salary") int salary,
-                         @RequestParam("department") int department) {
+                           @RequestParam("lastName") String lastName) {
         if (Objects.isNull(name) || Objects.isNull(lastName)) {
             System.out.println("Неправильно переданы параметры!");
         }
-        return employeeService.searchEmployee(name, lastName, salary, department);
+        return employeeService.searchEmployee(name, lastName);
     }
 
     @GetMapping("/")
