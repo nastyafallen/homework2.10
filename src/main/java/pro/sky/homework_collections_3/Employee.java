@@ -12,8 +12,8 @@ public class Employee {
     @JsonProperty("lastName")
     private String lastName;
 
-    private double salary;
-    private int department;
+    private final double salary;
+    private final int department;
 
     public Employee(String name, String lastName, double salary, int department) {
         this.name = name;
@@ -26,30 +26,14 @@ public class Employee {
         return salary;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
     public int getDepartment() {
         return department;
-    }
-
-    public void setDepartment(int department) {
-        this.department = department;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
         StringUtils.lowerCase(name);
         StringUtils.capitalize(name);
         this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     public void setLastName(String lastName) {
