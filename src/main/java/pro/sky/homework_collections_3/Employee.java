@@ -1,6 +1,7 @@
-package pro.sky.homework_collections_3.service;
+package pro.sky.homework_collections_3;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 
@@ -42,6 +43,8 @@ public class Employee {
     }
 
     public void setName(String name) {
+        StringUtils.lowerCase(name);
+        StringUtils.capitalize(name);
         this.name = name;
     }
 
@@ -50,6 +53,8 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
+        StringUtils.lowerCase(lastName);
+        StringUtils.capitalize(lastName);
         this.lastName = lastName;
     }
 

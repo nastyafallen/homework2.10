@@ -1,13 +1,13 @@
 package pro.sky.homework_collections_3.service;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import pro.sky.homework_collections_3.Employee;
+import pro.sky.homework_collections_3.exceptions.BadRequestException;
 import pro.sky.homework_collections_3.exceptions.EmployeeAlreadyAddedException;
 import pro.sky.homework_collections_3.exceptions.EmployeeNotFoundException;
 
 import java.util.*;
-import java.util.function.Supplier;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 @Service
 public class EmployeeService {
@@ -27,7 +27,10 @@ public class EmployeeService {
 
     public Employee addEmployee(String name, String lastName, double salary, int department) throws EmployeeAlreadyAddedException {
         Employee employee = new Employee(name, lastName, salary, department);
+        employee.setName(name);
+        employee.setLastName(lastName);
         String key = getKey(name, lastName);
+        checkName(key);
         if (!staff.containsKey(key)) {
             staff.put(key, employee);
         } else {
@@ -58,6 +61,12 @@ public class EmployeeService {
 
     private String getKey(String name, String lastName) {
         return name + " " + lastName;
+    }
+
+    public void checkName(String s) throws BadRequestException {
+        if (!StringUtils.isAlpha(s)) {
+            throw new BadRequestException("Данные введены некорректно!");
+        }
     }
 
 }
