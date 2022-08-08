@@ -41,6 +41,7 @@ public class EmployeeService {
 
     public Employee removeEmployee(String name, String lastName) throws EmployeeNotFoundException {
         String key = getKey(name, lastName);
+        checkName(key);
         if (!staff.containsKey(key)) {
             throw new EmployeeNotFoundException("Employee is not found");
         }
@@ -49,6 +50,7 @@ public class EmployeeService {
 
     public Employee searchEmployee(String name, String lastName) throws EmployeeNotFoundException {
         String key = getKey(name, lastName);
+        checkName(key);
         if (!staff.containsKey(key)) {
             throw new EmployeeNotFoundException("Employee is not found");
         }
