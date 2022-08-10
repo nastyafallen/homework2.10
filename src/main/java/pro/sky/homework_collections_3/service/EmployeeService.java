@@ -29,7 +29,7 @@ public class EmployeeService {
         Employee employee = new Employee(name, lastName, salary, department);
         employee.setName(name);
         employee.setLastName(lastName);
-        String key = getKey(name, lastName);
+        String key = getKey(employee.getName(), employee.getLastName());
         checkName(key);
         if (!staff.containsKey(key)) {
             staff.put(key, employee);

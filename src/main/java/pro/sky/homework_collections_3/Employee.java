@@ -31,23 +31,19 @@ public class Employee {
     }
 
     public void setName(String name) {
-        StringUtils.lowerCase(name);
-        StringUtils.capitalize(name);
-        this.name = name;
+        this.name = StringUtils.capitalize(StringUtils.lowerCase(name));
     }
 
     public void setLastName(String lastName) {
-        StringUtils.lowerCase(lastName);
-        StringUtils.capitalize(lastName);
-        this.lastName = lastName;
+        this.lastName = StringUtils.capitalize(StringUtils.lowerCase(lastName));
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return Double.compare(employee.salary, salary) == 0 && department == employee.department && name.equals(employee.name) && lastName.equals(employee.lastName);
+    public String getName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     @Override
